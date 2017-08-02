@@ -40,3 +40,15 @@ By default, the runserver command starts the development server on the internal 
 If you want to change the server’s IP, pass it along with the port. For example, to listen on all available public IPs (which is useful if you are running Vagrant or want to show off your work on other computers on the network), use:
 
     $ python manage.py runserver 0:8000
+
+### Creating the Polls app
+
+Now that your environment – a “project” – is set up, you’re set to start doing work. A **project** is a collection of configuration and apps for a particular website. A project can contain multiple apps. An app can be in multiple projects.
+
+Each **application** you write in Django consists of a Python package that follows a certain convention. Django comes with a utility that automatically generates the basic directory structure of an app, so you can focus on writing code rather than creating directories.
+
+Your apps can live anywhere on your Python path. In this tutorial, we’ll create our poll app right next to your manage.py file so that it can be imported as its own top-level module, rather than a submodule of mysite.
+
+To create your app, make sure you’re in the same directory as manage.py and type this command:
+
+    $ python manage.py startapp polls
