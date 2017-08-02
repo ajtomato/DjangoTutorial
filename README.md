@@ -52,3 +52,7 @@ Your apps can live anywhere on your Python path. In this tutorial, we’ll creat
 To create your app, make sure you’re in the same directory as manage.py and type this command:
 
     $ python manage.py startapp polls
+
+### Write your first view
+
+To call the view, we need to map it to a URL - and for this we need a URLconf. To create a URLconf in the _polls_ directory, create a file called _urls.py_. The next step is to point the root URLconf at the polls.urls module.
