@@ -56,3 +56,34 @@ To create your app, make sure you’re in the same directory as manage.py and ty
 ### Write your first view
 
 To call the view, we need to map it to a URL - and for this we need a URLconf. To create a URLconf in the _polls_ directory, create a file called _urls.py_. The next step is to point the root URLconf at the polls.urls module.
+
+## Writing your first Django app, part 2
+
+### Database setup
+
+_mysite/settings.py_ is a normal Python module with module-level variables representing Django settings.
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        },
+        'sid': {
+            'ENGINE': 'django.db.backends.oracle',
+            'NAME': 'sid',
+            'USER': 'username',
+            'PASSWORD': 'password',
+            'HOST': 'ip',
+            'PORT': 'port',
+        },
+        'server_name': {
+            'ENGINE': 'django.db.backends.oracle',
+            'NAME': 'ip:port/service_name',
+            'USER': 'username',
+            'PASSWORD': 'password',
+        }
+    }
+
+The _migrate_ command looks at the _INSTALLED\_APPS_ setting and creates any necessary database tables according to the database settings in your mysite/settings.py file and the database migrations shipped with the app. The _migrate_ command will only run migrations for apps in INSTALLED_APPS.
+
+    $ python manage.py migrate
