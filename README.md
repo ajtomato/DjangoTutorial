@@ -87,3 +87,33 @@ _mysite/settings.py_ is a normal Python module with module-level variables repre
 The _migrate_ command looks at the _INSTALLED\_APPS_ setting and creates any necessary database tables according to the database settings in your mysite/settings.py file and the database migrations shipped with the app. The _migrate_ command will only run migrations for apps in INSTALLED_APPS.
 
     $ python manage.py migrate
+
+### Creating models
+
+A model is the single, definitive source of truth about your data. It contains the essential fields and behaviors of the data you’re storing.
+
+You can use an optional first positional argument to a _Field_ to designate a human-readable name. That’s used in a couple of introspective parts of Django, and it doubles as documentation.
+
+### Activating models
+
+To include the app in our project, we need to add a reference to its configuration class in the _INSTALLED\_APPS_ setting. The _PollsConfig_ class is in the _polls/apps.py_ file, so its dotted path is 'polls.apps.PollsConfig'.
+
+By running _makemigrations_, you’re telling Django that you’ve made some changes to your models (in this case, you’ve made new ones) and that you’d like the changes to be stored as a migration.
+
+    $ python manage.py makemigrations polls
+
+Migrations are how Django stores changes to your models (and thus your database schema) - they’re just files on disk.
+
+The _sqlmigrate_ command takes migration names and returns their SQL. The sqlmigrate command doesn’t actually run the migration on your database - it just prints it to the screen so that you can see what SQL Django thinks is required.
+
+    $ python manage.py sqlmigrate polls 0001
+
+The following command checks for any problems in your project without making migrations or touching the database.
+
+    $ python manage.py check
+
+In short, the three-step guide to making model changes:
+
+* Change your models (in _models.py_).
+* Run _python manage.py makemigrations_ to create migrations for those changes
+* Run _python manage.py migrate_ to apply those changes to the database.
