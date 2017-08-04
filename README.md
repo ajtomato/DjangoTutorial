@@ -221,3 +221,9 @@ The _render()_ function takes the request object as its first argument, a templa
 The *get_object_or_404()* function takes a Django model as its first argument and an arbitrary number of keyword arguments, which it passes to the *get()* function of the model’s manager. It raises *Http404* if the object doesn’t exist.
 
 There’s also a *get_list_or_404()* function, which works just as *get_object_or_404()* – except using *filter()* instead of *get()*. It raises *Http404* if the list is empty.
+
+### Use the template system
+
+The template system uses dot-lookup syntax to access variable attributes. In the example of *{{ question.question_text }}*, first Django does a *dictionary lookup* on the object *question*. Failing that, it tries an *attribute lookup* – which works, in this case. If attribute lookup had failed, it would’ve tried a *list-index lookup*.
+
+Method-calling happens in the *{% for %}* loop: *question.choice_set.all* is interpreted as the Python code *question.choice_set.all()*, which returns an iterable of *Choice* objects and is suitable for use in the *{% for %}* tag.
