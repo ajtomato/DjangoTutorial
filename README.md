@@ -213,3 +213,7 @@ Your project’s *TEMPLATES* *setting* describes how Django will load and render
 #### A shortcut: render()
 
 The _render()_ function takes the request object as its first argument, a template name as its second argument and a dictionary as its optional third argument. It returns an _HttpResponse_ object of the given template rendered with the given context.
+
+### Raising a 404 error
+
+
