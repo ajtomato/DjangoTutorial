@@ -216,4 +216,8 @@ The _render()_ function takes the request object as its first argument, a templa
 
 ### Raising a 404 error
 
+#### A shortcut: get_object_or_404()
 
+The *get_object_or_404()* function takes a Django model as its first argument and an arbitrary number of keyword arguments, which it passes to the *get()* function of the model’s manager. It raises *Http404* if the object doesn’t exist.
+
+There’s also a *get_list_or_404()* function, which works just as *get_object_or_404()* – except using *filter()* instead of *get()*. It raises *Http404* if the list is empty.
