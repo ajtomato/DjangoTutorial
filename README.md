@@ -209,3 +209,7 @@ The *question_id='34'* part comes from *(?P<question_id>[0-9]+)*. Using *parenth
 Each view is responsible for doing one of two things: returning an _HttpResponse_ object containing the content for the requested page, or raising an exception such as _Http404_.
 
 Your project’s *TEMPLATES* *setting* describes how Django will load and render templates. The default settings file configures a *DjangoTemplates* backend whose *APP_DIRS* option is set to *True*. By convention *DjangoTemplates* looks for a “*templates*” subdirectory in each of the *INSTALLED_APPS*.
+
+#### A shortcut: render()
+
+The _render()_ function takes the request object as its first argument, a template name as its second argument and a dictionary as its optional third argument. It returns an _HttpResponse_ object of the given template rendered with the given context.
