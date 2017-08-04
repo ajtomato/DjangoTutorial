@@ -187,3 +187,25 @@ It’s important to add _\_\_str\_\_()_ methods to your models, not only for you
 Now, open a Web browser and go to “/admin/” on your local domain – e.g., http://127.0.0.1:8000/admin/. You should see the admin’s login screen.
 
 #### Make the poll app modifiable in the admin
+
+## Writing your first Django app, part 3
+
+### Overview
+
+A view is a “type” of Web page in your Django application that generally serves a specific function and has a specific template.
+
+In Django, web pages and other content are delivered by views. Each view is represented by a simple Python function (or method, in the case of class-based views). Django will choose a view by examining the URL that’s requested (to be precise, the part of the URL after the domain name). To get from a URL to a view, Django uses what are known as ‘URLconfs’. A URLconf maps URL patterns (described as regular expressions) to views.
+
+### Writing more views
+
+When somebody requests a page from your website – say, “/polls/34/”, Django will load the _mysite.urls_ Python module because it’s pointed to by the _ROOT\_URLCONF_ _setting_. It finds the variable named urlpatterns and traverses the regular expressions in order. After finding the match at '_^polls/_', it **strips off** the matching text ("_polls/_") and sends the remaining text – "34/" – to the ‘_polls.urls_’ URLconf for further processing. There it matches *r'^(?P<question_id>[0-9]+)/$'*, resulting in a call to the *detail()* view like so:
+
+    detail(request=<HttpRequest object>, question_id='34')
+
+The *question_id='34'* part comes from *(?P<question_id>[0-9]+)*. Using *parentheses* around a **pattern** “captures” the text matched by that **pattern** and sends it as an argument to the view function; *?P<question_id>* defines the **name** that will be used to identify the matched **pattern**; and [0-9]+ is a regular expression to match a sequence of digits (i.e., a number).
+
+### Write views that actually do something
+
+Each view is responsible for doing one of two things: returning an _HttpResponse_ object containing the content for the requested page, or raising an exception such as _Http404_.
+
+Your project’s *TEMPLATES* *setting* describes how Django will load and render templates. The default settings file configures a *DjangoTemplates* backend whose *APP_DIRS* option is set to *True*. By convention *DjangoTemplates* looks for a “*templates*” subdirectory in each of the *INSTALLED_APPS*.
