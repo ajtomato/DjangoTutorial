@@ -231,3 +231,5 @@ Method-calling happens in the *{% for %}* loop: *question.choice_set.all* is int
 ### Removing hardcoded URLs in templates
 
 Since you defined the _name_ argument in the _url()_ functions in the _polls.urls_ module, you can remove a reliance on specific URL paths defined in your url configurations by using the _{% url %}_ template tag.
+
+### Namespacing URL names
