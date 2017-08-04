@@ -177,3 +177,13 @@ The following django database API can be used:
     >>> c.delete()
 
 It’s important to add _\_\_str\_\_()_ methods to your models, not only for your own convenience when dealing with the interactive prompt, but also because objects’ representations are used throughout Django’s automatically-generated admin.
+
+### Introducing the Django Admin
+
+#### Creating an admin user¶
+
+    $ python manage.py createsuperuser
+
+Now, open a Web browser and go to “/admin/” on your local domain – e.g., http://127.0.0.1:8000/admin/. You should see the admin’s login screen.
+
+#### Make the poll app modifiable in the admin
