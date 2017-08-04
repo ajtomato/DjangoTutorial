@@ -227,3 +227,7 @@ There’s also a *get_list_or_404()* function, which works just as *get_object_o
 The template system uses dot-lookup syntax to access variable attributes. In the example of *{{ question.question_text }}*, first Django does a *dictionary lookup* on the object *question*. Failing that, it tries an *attribute lookup* – which works, in this case. If attribute lookup had failed, it would’ve tried a *list-index lookup*.
 
 Method-calling happens in the *{% for %}* loop: *question.choice_set.all* is interpreted as the Python code *question.choice_set.all()*, which returns an iterable of *Choice* objects and is suitable for use in the *{% for %}* tag.
+
+### Removing hardcoded URLs in templates
+
+Since you defined the _name_ argument in the _url()_ functions in the _polls.urls_ module, you can remove a reliance on specific URL paths defined in your url configurations by using the _{% url %}_ template tag.
