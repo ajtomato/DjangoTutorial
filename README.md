@@ -233,3 +233,13 @@ Method-calling happens in the *{% for %}* loop: *question.choice_set.all* is int
 Since you defined the _name_ argument in the _url()_ functions in the _polls.urls_ module, you can remove a reliance on specific URL paths defined in your url configurations by using the _{% url %}_ template tag.
 
 ### Namespacing URL names
+
+## Writing your first Django app, part 4
+
+### Write a simple form
+
+Since we’re creating a POST form (which can have the effect of modifying data), we need to worry about Cross Site Request Forgeries. All POST forms that are targeted at internal URLs should use the {% csrf_token %} template tag.
+
+_request.POST_ is a dictionary-like object that lets you access submitted data by key name. _request.POST_ values are always strings. Note that Django also provides request.GET for accessing GET data in the same way.
+
+We are using the _reverse()_ function in the _HttpResponseRedirect_ constructor in this example. This function helps avoid having to hardcode a URL in the view function. It is given the name of the view that we want to pass control to and the variable portion of the URL pattern that points to that view.
