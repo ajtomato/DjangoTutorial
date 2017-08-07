@@ -259,3 +259,19 @@ Generic views abstract common patterns to the point where you don’t even need 
 The testing system will automatically find tests in any file whose name begins with _test_.
 
     $ python manage.py test polls
+
+### Test a view
+
+ _django.test.TestCase_ class comes with its own client.
+
+### When testing, more is better
+
+* A separate TestClass for each model or view
+* A separate test method for each set of conditions you want to test
+* Test method names that describe their function
+
+### Further testing
+
+You can use an “in-browser” framework such as _Selenium_ to test the way your HTML actually renders in a browser.
+
+Django includes _LiveServerTestCase_ to facilitate integration with tools like Selenium.
