@@ -243,3 +243,7 @@ Since we’re creating a POST form (which can have the effect of modifying data)
 _request.POST_ is a dictionary-like object that lets you access submitted data by key name. _request.POST_ values are always strings. Note that Django also provides request.GET for accessing GET data in the same way.
 
 We are using the _reverse()_ function in the _HttpResponseRedirect_ constructor in this example. This function helps avoid having to hardcode a URL in the view function. It is given the name of the view that we want to pass control to and the variable portion of the URL pattern that points to that view.
+
+### Use generic views: Less code is better
+
+Generic views abstract common patterns to the point where you don’t even need to write Python code to write an app.
