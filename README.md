@@ -247,3 +247,15 @@ We are using the _reverse()_ function in the _HttpResponseRedirect_ constructor 
 ### Use generic views: Less code is better
 
 Generic views abstract common patterns to the point where you don’t even need to write Python code to write an app.
+
+## Writing your first Django app, part 5
+
+### Introducing automated testing
+
+### Basic testing strategies
+
+### Writing our first test
+
+The testing system will automatically find tests in any file whose name begins with _test_.
+
+    $ python manage.py test polls
