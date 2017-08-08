@@ -293,3 +293,5 @@ Of course the _{% static %}_ template tag is not available for use in static fil
 ### Customize the admin form
 
 You’ll follow this pattern – create a model admin class, then pass it as the second argument to admin.site.register() – any time you need to change the admin options for a model.
+
+### Adding related objects
