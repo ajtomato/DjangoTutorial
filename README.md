@@ -299,3 +299,7 @@ You’ll follow this pattern – create a model admin class, then pass it as the
 ### Customize the admin change list
 
 *list_display* admin option is a tuple of field names to display, as columns, on the change list page for the object.
+
+### Customize the admin look and feel
+
+Note that any of Django’s default admin templates can be overridden. To override a template, just do the same thing you did with *base_site.html* – copy it from the default directory (django\django\contrib\admin\templates\admin) into your custom directory, and make changes.
