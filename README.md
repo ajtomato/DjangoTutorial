@@ -305,3 +305,63 @@ You’ll follow this pattern – create a model admin class, then pass it as the
 Note that any of Django’s default admin templates can be overridden. To override a template, just do the same thing you did with *base_site.html* – copy it from the default directory (django\django\contrib\admin\templates\admin) into your custom directory, and make changes.
 
 ### Customize the admin index page
+
+## Advanced tutorial: How to write reusable apps
+
+1. First, create a parent directory for *polls*, outside of your Django project. Call this directory *django-polls*.
+
+2. Move the polls directory into the django-polls directory.
+
+3. Create a file django-polls/README.rst with the following contents:
+
+        =====
+        Polls
+        =====
+
+        Polls is a simple Django app to conduct Web-based polls. For each
+        question, visitors can choose between a fixed number of answers.
+
+        Detailed documentation is in the "docs" directory.
+
+        Quick start
+        -----------
+
+        1. Add "polls" to your INSTALLED_APPS setting like this::
+
+            INSTALLED_APPS = [
+                ...
+                'polls',
+            ]
+
+        2. Include the polls URLconf in your project urls.py like this::
+
+            url(r'^polls/', include('polls.urls')),
+
+        3. Run `python manage.py migrate` to create the polls models.
+
+        4. Start the development server and visit http://127.0.0.1:8000/admin/
+        to create a poll (you'll need the Admin app enabled).
+
+        5. Visit http://127.0.0.1:8000/polls/ to participate in the poll.
+
+4. Create a django-polls/LICENSE file.
+
+5. Next we’ll create a *setup.py* file which provides details about how to build and install the app. Create a file *django-polls/setup.py*.
+
+6. Only Python modules and packages are included in the package by default. To include additional files, we’ll need to create a  *django-polls/MANIFEST.in* file.
+
+        include LICENSE
+        include README.rst
+        recursive-include polls/static *
+        recursive-include polls/templates *
+        recursive-include polls/docs *
+
+7. Try building your package with *python setup.py sdist* (run from inside *django-polls*). This creates a directory called *dist* and builds your new package, *django-polls-0.1.tar.gz*.
+
+To install the package, use pip:
+
+    pip install --user django-polls/dist/django-polls-0.1.tar.gz
+
+To uninstall the package, use pip:
+
+    pip uninstall django-polls
